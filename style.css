@@ -140,7 +140,7 @@ body {
 
 #cardapio {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* padrão mobile */
+    grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     padding: 12px;
 }
@@ -184,11 +184,12 @@ body {
     color: #888;
 }
 
+/* 🔥 CORREÇÃO AQUI */
 .produto-acoes {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+    gap: 10px;
 }
 
 .preco {
@@ -196,11 +197,14 @@ body {
     font-weight: bold;
 }
 
-/* BOTÃO ADD */
-
+/* 🔥 BOTÃO CORRIGIDO */
 .btn-add {
     width: 44px;
     height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+
+    flex-shrink: 0;
 
     border-radius: 14px;
     border: none;
@@ -227,7 +231,7 @@ body {
     box-shadow: 0 0 12px rgba(255,106,0,0.6);
 }
 
-/* ================= BOTÃO CARRINHO ================= */
+/* ================= RESTANTE (SEM ALTERAÇÃO) ================= */
 
 .cart-btn {
     position: fixed;
@@ -247,8 +251,6 @@ body {
     transform: scale(1.08);
 }
 
-/* ================= OVERLAY ================= */
-
 #overlay {
     position: fixed;
     width: 100%;
@@ -265,8 +267,6 @@ body {
     opacity: 1;
     pointer-events: all;
 }
-
-/* ================= CARRINHO ================= */
 
 .carrinho {
     position: fixed;
@@ -316,8 +316,6 @@ body {
     margin-bottom: 8px;
 }
 
-/* INPUTS */
-
 .dados-cliente {
     display: flex;
     flex-direction: column;
@@ -332,8 +330,6 @@ body {
     background: #111;
     color: white;
 }
-
-/* PAGAMENTO */
 
 .pagamento-box {
     position: relative;
@@ -374,8 +370,6 @@ body {
     background: rgba(255,106,0,0.1);
 }
 
-/* FINALIZAR */
-
 .carrinho-footer {
     padding: 10px;
 }
@@ -390,8 +384,6 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
-
-/* SWIPE */
 
 .swipe-area {
     position: fixed;
