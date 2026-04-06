@@ -199,13 +199,27 @@ body {
 /* BOTÃO ADD */
 
 .btn-add {
-    width: 36px;
-    height: 36px;
-    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+
+    border-radius: 14px;
     border: none;
+
     background: linear-gradient(135deg, #ff6a00, #ff9d2f);
+    color: #000;
+    font-size: 18px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     cursor: pointer;
     transition: 0.25s;
+}
+
+.btn-add:active {
+    transform: scale(0.9);
 }
 
 .btn-add:hover {
