@@ -1,79 +1,137 @@
-* {
+/* ================= RESET ================= */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 body {
-    background: radial-gradient(circle at top, #0f0f0f, #000);
-    color: white;
+    font-family: 'Poppins', sans-serif;
+    background: #ffffff;
+    color: #ffffff;
     -webkit-font-smoothing: antialiased;
 }
 
 /* ================= HEADER ================= */
 
-header {
+.header {
+    width: 100%;
+    padding: 40px 20px 25px;
+    background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     text-align: center;
-    padding: 40px 20px;
-    position: relative;
 }
 
-header h1 {
-    font-size: 2.4rem;
-    font-weight: 900;
-    letter-spacing: 2px;
-    background: linear-gradient(90deg, #ff6a00, #ff9d2f);
+.header-content h1 {
+    font-size: 34px;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+
+    background: linear-gradient(90deg, #ffffff, #ff9d2f);
     -webkit-background-clip: text;
-    background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    text-shadow: 0 5px 25px rgba(255, 157, 47, 0.15);
+
+    opacity: 0;
+    transform: translateY(-20px);
+    animation: fadeInUp 0.8s ease forwards;
 }
 
-header p {
+.header-content p {
     margin-top: 8px;
-    font-size: 0.85rem;
+    font-size: 14px;
     color: #aaa;
+    letter-spacing: 0.3px;
+
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* ================= FILTROS ================= */
 
 .filtros {
+    position: relative;
     display: flex;
-    gap: 10px;
-    padding: 8px;
-    margin: 15px;
-    background: rgba(255,255,255,0.03);
-    border-radius: 40px;
-    backdrop-filter: blur(10px);
+    gap: 8px;
+    padding: 6px;
+    margin: 20px;
+
+    background: rgba(255, 106, 0, 0.15);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 50px;
+
     overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.filtros::-webkit-scrollbar {
+    display: none;
 }
 
 .filtros button {
+    position: relative;
+    z-index: 2;
+
     background: transparent;
     border: none;
-    color: #888;
-    padding: 10px 18px;
-    border-radius: 30px;
+    color: #2b2b2b;
+
+    padding: 10px 20px;
+    border-radius: 999px;
+
+    font-size: 14px;
+    font-weight: 500;
+
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.25s ease;
+
+    opacity: 0.7;
 }
 
 .filtros button:hover {
-    color: white;
+    color: #ffffff;
+    transform: translateY(-1px);
+    opacity: 1;
 }
 
 .filtros button.ativo {
-    color: black;
-    font-weight: bold;
+    color: #000;
+    font-weight: 600;
+    opacity: 1;
 }
 
 .indicador {
     position: absolute;
     top: 6px;
+    left: 0;
+
     height: calc(100% - 12px);
-    background: linear-gradient(135deg, #ff6a00, #ff9d2f);
-    border-radius: 40px;
-    transition: 0.3s;
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #ff7a18, #ffb347);
+
+    box-shadow: 
+        0 4px 15px rgba(255, 122, 24, 0.4),
+        inset 0 0 5px rgba(255,255,255,0.2);
+
+    transition: transform 0.3s ease, width 0.3s ease;
+
+    z-index: 1;
 }
 
 /* ================= GRID ================= */
@@ -104,16 +162,12 @@ header p {
     box-shadow: 0 15px 30px rgba(0,0,0,0.7);
 }
 
-/* IMG */
-
 .produto-img {
     width: 100%;
     height: 130px;
     object-fit: cover;
     filter: brightness(0.95);
 }
-
-/* INFO */
 
 .produto-info {
     padding: 10px;
@@ -128,8 +182,6 @@ header p {
     color: #888;
 }
 
-/* AÇÕES */
-
 .produto-acoes {
     display: flex;
     justify-content: space-between;
@@ -142,7 +194,7 @@ header p {
     font-weight: bold;
 }
 
-/* BOTÃO */
+/* BOTÃO ADD */
 
 .btn-add {
     width: 36px;
@@ -159,7 +211,7 @@ header p {
     box-shadow: 0 0 12px rgba(255,106,0,0.6);
 }
 
-/* ================= CARRINHO BOTÃO ================= */
+/* ================= BOTÃO CARRINHO ================= */
 
 .cart-btn {
     position: fixed;
@@ -205,7 +257,7 @@ header p {
     right: -100%;
     width: 320px;
     height: 100%;
-    background: #0a0a0a;
+    background: #000;
     border-left: 1px solid #222;
     transition: 0.35s;
     display: flex;
@@ -221,114 +273,6 @@ header p {
     justify-content: space-between;
     padding: 15px;
     border-bottom: 1px solid #222;
-}
-
-.carrinho li {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-}
-
-.carrinho li button {
-    width: 26px;
-    height: 26px;
-    border-radius: 8px;
-    border: none;
-    background: linear-gradient(135deg, #ff6a00, #ff9d2f);
-}
-
-/* INPUTS */
-
-.dados-cliente {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 10px;
-}
-
-.dados-cliente input,
-.dados-cliente select {
-    padding: 10px;
-    border-radius: 10px;
-    border: 1px solid #222;
-    background: #111;
-    color: white;
-}
-
-/* BOTÃO FINAL */
-
-.carrinho-footer {
-    padding: 10px;
-}
-
-.carrinho-footer button {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    background: linear-gradient(135deg, #25D366, #1ebe5d);
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-/* ================= SWIPE AREA ================= */
-
-.swipe-area {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 25px;
-    height: 100%;
-    z-index: 998;
-}
-
-/* ================= PAGAMENTO MODERNO ================= */
-
-.pagamento-box {
-    position: relative;
-}
-
-#btn-pagamento {
-    width: 100%;
-    padding: 12px;
-    border-radius: 12px;
-    border: 1px solid #222;
-    background: #111;
-    color: #aaa;
-    text-align: left;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#btn-pagamento:hover {
-    border-color: #ff6a00;
-}
-
-.pagamento-opcoes {
-    position: absolute;
-    width: 100%;
-    top: 110%;
-    left: 0;
-    background: #0f0f0f;
-    border: 1px solid #222;
-    border-radius: 12px;
-    overflow: hidden;
-    display: none;
-    z-index: 10;
-}
-
-.pagamento-opcoes.ativo {
-    display: block;
-}
-
-.pagamento-opcoes div {
-    padding: 12px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.pagamento-opcoes div:hover {
-    background: rgba(255,106,0,0.1);
 }
 
 .carrinho-header button {
@@ -352,10 +296,91 @@ header p {
     background: #111;
     padding: 8px;
     border-radius: 10px;
+    margin-bottom: 8px;
 }
 
-#lista-carrinho div {
+/* INPUTS */
+
+.dados-cliente {
     display: flex;
-    align-items: center;
-    gap: 6px;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+}
+
+.dados-cliente input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #222;
+    background: #111;
+    color: white;
+}
+
+/* PAGAMENTO */
+
+.pagamento-box {
+    position: relative;
+}
+
+#btn-pagamento {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #222;
+    background: #111;
+    color: #aaa;
+    text-align: left;
+    cursor: pointer;
+}
+
+.pagamento-opcoes {
+    position: absolute;
+    width: 100%;
+    top: 110%;
+    left: 0;
+    background: #0f0f0f;
+    border: 1px solid #222;
+    border-radius: 12px;
+    display: none;
+}
+
+.pagamento-opcoes.ativo {
+    display: block;
+}
+
+.pagamento-opcoes div {
+    padding: 12px;
+    cursor: pointer;
+}
+
+.pagamento-opcoes div:hover {
+    background: rgba(255,106,0,0.1);
+}
+
+/* FINALIZAR */
+
+.carrinho-footer {
+    padding: 10px;
+}
+
+.carrinho-footer button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #25D366, #1ebe5d);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* SWIPE */
+
+.swipe-area {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 25px;
+    height: 100%;
+    z-index: 998;
 }
