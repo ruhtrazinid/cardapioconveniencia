@@ -13,24 +13,26 @@ body {
     background: #ffffff;
     color: #ffffff;
     -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
 }
 
 /* ================= HEADER ================= */
 
 .header {
     width: 100%;
-    padding: 40px 20px 25px;
+    padding: 30px 15px 20px;
     background: radial-gradient(circle at top, #1a1a1a, #0b0b0b);
     border-bottom: 1px solid rgba(255,255,255,0.05);
     text-align: center;
 }
 
 .header-content h1 {
-    font-size: 34px;
+    font-size: 24px;
     font-weight: 800;
     letter-spacing: 0.5px;
 
     background: linear-gradient(90deg, #ffffff, #ff9d2f);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 
@@ -43,7 +45,7 @@ body {
 
 .header-content p {
     margin-top: 8px;
-    font-size: 14px;
+    font-size: 12px;
     color: #aaa;
     letter-spacing: 0.3px;
 
@@ -138,9 +140,9 @@ body {
 
 #cardapio {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    padding: 15px;
+    grid-template-columns: repeat(2, 1fr); /* padrão mobile */
+    gap: 12px;
+    padding: 12px;
 }
 
 /* ================= CARD ================= */
@@ -164,7 +166,7 @@ body {
 
 .produto-img {
     width: 100%;
-    height: 130px;
+    height: 110px;
     object-fit: cover;
     filter: brightness(0.95);
 }
@@ -174,11 +176,11 @@ body {
 }
 
 .produto-info h3 {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
 }
 
 .produto-info p {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: #888;
 }
 
@@ -215,15 +217,16 @@ body {
 
 .cart-btn {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 15px;
+    right: 15px;
     background: linear-gradient(135deg, #ff6a00, #ff9d2f);
-    padding: 14px 18px;
+    padding: 12px 16px;
     border-radius: 30px;
     cursor: pointer;
     font-weight: bold;
     box-shadow: 0 10px 30px rgba(255,106,0,0.4);
     transition: 0.3s;
+    font-size: 14px;
 }
 
 .cart-btn:hover {
@@ -255,8 +258,8 @@ body {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 320px;
-    height: 100%;
+    width: 100%;
+    max-height: 400px;
     background: #000;
     border-left: 1px solid #222;
     transition: 0.35s;
@@ -383,4 +386,25 @@ body {
     width: 25px;
     height: 100%;
     z-index: 998;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
+@media (min-width: 600px) {
+    #cardapio {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    #cardapio {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
 }
