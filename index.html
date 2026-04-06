@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo - Conveniência Bodocó</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>🍻 Conveniência Bodocó</h1>
+        <p>Seu rolê começa aqui</p>
+    </header>
+
+    <!-- FILTROS -->
+    <section class="filtros">
+        <div class="indicador"></div>
+
+        <button onclick="filtrar('todos', this)" class="ativo">Todos</button>
+        <button onclick="filtrar('cerveja', this)">Cerveja</button>
+        <button onclick="filtrar('whisky', this)">Whisky</button>
+        <button onclick="filtrar('cachaca', this)">Cachaça</button>
+        <button onclick="filtrar('refrigerante', this)">Refrigerante</button>
+    </section>
+
+    <!-- PRODUTOS -->
+    <main id="cardapio" class="lista-produtos"></main>
+
+    <!-- BOTÃO DO CARRINHO -->
+    <div class="cart-btn" onclick="toggleCarrinho()">
+        🛒 <span id="cart-count">0</span>
+    </div>
+
+    <!-- OVERLAY -->
+    <div id="overlay" onclick="toggleCarrinho()"></div>
+
+    <!-- CARRINHO -->
+<aside class="carrinho" id="carrinho">
+
+    <div class="carrinho-header">
+        <h3>Seu Carrinho</h3>
+        <button id="fechar-carrinho">✖</button>
+    </div>
+
+    <ul id="lista-carrinho"></ul>
+
+    <div class="dados-cliente">
+        <input id="nome" placeholder="Seu nome">
+        <input id="endereco" placeholder="Endereço (ex: centro)">
+
+        <div class="pagamento-box">
+            <button id="btn-pagamento">Selecionar pagamento</button>
+
+            <div class="pagamento-opcoes" id="opcoes-pagamento">
+                <div data-pag="Dinheiro">💵 Dinheiro</div>
+                <div data-pag="Pix">⚡ Pix</div>
+                <div data-pag="Cartão">💳 Cartão</div>
+            </div>
+        </div>
+
+        <input type="hidden" id="pagamento">
+    </div>
+
+    <div class="carrinho-footer">
+        <p>Total: R$ <span id="total">0.00</span></p>
+        <button id="finalizar">Finalizar Pedido</button>
+    </div>
+
+</aside>
+
+    <script src="script.js"></script>
+
+<div class="swipe-area"></div>
+
+</body>
+</html>
